@@ -9,10 +9,6 @@ var num = "1234567890".split("");
 console.log(num);
 var sym = "~!@#$%^&*<>?,.;:{}[]-=+_)(".split("");
 console.log(sym);
-var majorBank = "~!@#$%^&*<>?,.;:{}[]-=+_)(1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxy".split(
-  ""
-);
-console.log(majorBank);
 
 // Write password to the #password input
 //numbers?
@@ -35,6 +31,7 @@ function generatePassword() {
   var confirms = 0;
   // newpassword variable is an array that will be filled with our random chracters for the password
   var newpassword = [];
+  var majorBank = [];
 
   //These confirms ask the user what chracter types they would like in their password
   //initially they are defined as false, but if the user presses ok it will change value to true, which will be used in the later conditional statements
@@ -50,15 +47,19 @@ function generatePassword() {
 
   // counter of # of confirms, checks to see of var numbers, symbols, caps, lowercase is true, and if it is true adds one to the counter of confirms. This will be used to set the number of randoms characters to be pulled from the character bank
   if (numbers) {
+    majorBank = majorBank.concat(num);
     confirms = confirms + 1;
   }
   if (symbols) {
+    majorBank = majorBank.concat(sym);
     confirms = confirms + 1;
   }
   if (caps) {
+    majorBank = majorBank.concat(alphabetCaps)
     confirms = confirms + 1;
   }
   if (lowercase) {
+    majorBank = majorBank.concat(alphabetLowercase)
     confirms = confirms + 1;
   }
   console.log(confirms);
