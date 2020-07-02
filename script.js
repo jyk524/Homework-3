@@ -1,6 +1,6 @@
 // Assignment Code
+// Here we add variables
 var generateBtn = document.querySelector("#generate");
-
 var alphabetLowercase = "abcdefghijklmnopqrstuvwxyz".split("");
 console.log(alphabetLowercase);
 var alphabetCaps = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
@@ -11,41 +11,46 @@ var sym = "~!@#$%^&*<>?,.;:{}[]-=+_)(".split("");
 console.log(sym);
 
 // Write password to the #password input
-//numbers?
-//symbols?
-//caps?
-//lowercase?
-// function will pull variable from a higher scope
+// The generate password function will return a newpassword that will be set to the password to be displayed
 function generatePassword() {
+  // asks the user how long they want the password to be and saves it to passwordLength. Password conditions are between 8-128 characters
   var passwordLength;
   passwordLength = prompt("How long do you want your password to be?");
   if (passwordLength > 128 || passwordLength < 8) {
     alert("Please choose a new number between 8 - 128 for you password length");
     return generatePassword();
   }
-  //placed confirm variables inside the function so that they are refreshed with every button press
+  // placed confirm variables inside the function so that they are refreshed with every button press. These are initially set to false as to not add the chracter type to the majorBank.
   var numbers = false;
   var symbols = false;
   var caps = false;
   var lowercase = false;
+  // counter for the number of confirms
   var confirms = 0;
   // newpassword variable is an array that will be filled with our random chracters for the password
   var newpassword = [];
+  //major bank is an empty array that will have the smaller banks added to it when the user chooses to. The random character will be chosen from here.
   var majorBank = [];
 
   //These confirms ask the user what chracter types they would like in their password
   //initially they are defined as false, but if the user presses ok it will change value to true, which will be used in the later conditional statements
 
-  numbers = confirm("Do you want numbers in your password? Click cancel for no");
+  numbers = confirm(
+    "Do you want numbers in your password? Click cancel for no"
+  );
   console.log(numbers);
-  symbols = confirm("Do you want symbols in your password? Click cancel for no");
+  symbols = confirm(
+    "Do you want symbols in your password? Click cancel for no"
+  );
   console.log(symbols);
   caps = confirm("Do you want caps in your password? Click cancel for no");
   console.log(caps);
-  lowercase = confirm("Do you want lowercase in your password? Click cancel for no");
+  lowercase = confirm(
+    "Do you want lowercase in your password? Click cancel for no"
+  );
   console.log(lowercase);
 
-  // counter of # of confirms, checks to see of var numbers, symbols, caps, lowercase is true, and if it is true adds one to the counter of confirms. This will be used to set the number of randoms characters to be pulled from the character bank
+  // if the user chooses a character type it will add 1 to the numbe rof confirms, and adds that character bank to the majorBank
   if (numbers) {
     majorBank = majorBank.concat(num);
     confirms = confirms + 1;
@@ -55,15 +60,18 @@ function generatePassword() {
     confirms = confirms + 1;
   }
   if (caps) {
-    majorBank = majorBank.concat(alphabetCaps)
+    majorBank = majorBank.concat(alphabetCaps);
     confirms = confirms + 1;
   }
   if (lowercase) {
-    majorBank = majorBank.concat(alphabetLowercase)
+    majorBank = majorBank.concat(alphabetLowercase);
     confirms = confirms + 1;
   }
-  if(confirms === 0){
-    alert("To generate a password, you will need to choose atleast one type of character. Please try again")
+  // if the user decides to not pick any of the character sets, it will alert the user they need to choose atleast one and then returns the function so they can start again.
+  if (confirms === 0) {
+    alert(
+      "To generate a password, you will need to choose atleast one type of character. Please try again"
+    );
     return generatePassword();
   }
   console.log(confirms);
@@ -102,7 +110,6 @@ function generatePassword() {
   return newpassword;
 }
 
-// }
 // Function randomPull will take in a string and pull out a random index by mutliplying 0-1 * string length
 function randomPull(string) {
   return Math.floor(Math.random() * string.length);
@@ -112,33 +119,6 @@ function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-
-  // If confirmed we will get atleast 1 character from each of the confirmed properties and add it to the password
-
-  // THEN my input should be validated and at least one character type should be selected
-
-  // create if else statement that checks array length between 8-128, and asks if they want number, upp case etc..
-  //user prompt - if not between 8-128, have them re-enter a number
-  //create if statements that add to the array
-  // .flat the combined array
-  //.floor * array length w/ math
-  //.join the result array
-
-  // GIVEN I need a new, secure password
-  // WHEN I click the button to generate a password
-  // THEN I am presented with a series of prompts for password criteria
-  // WHEN prompted for password criteria
-  // THEN I select which criteria to include in the password
-  // WHEN prompted for the length of the password
-  // THEN I choose a length of at least 8 characters and no more than 128 characters
-  // WHEN prompted for character types to include in the password
-  // THEN I choose lowercase, uppercase, numeric, and/or special characters
-  // WHEN I answer each prompt
-  // THEN my input should be validated and at least one character type should be selected
-  // WHEN all prompts are answered
-  // THEN a password is generated that matches the selected criteria
-  // WHEN the password is generated
-  // THEN the password is either displayed in an alert or written to the page
 }
 
 // Add event listener to generate button
