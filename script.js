@@ -36,13 +36,13 @@ function generatePassword() {
   //These confirms ask the user what chracter types they would like in their password
   //initially they are defined as false, but if the user presses ok it will change value to true, which will be used in the later conditional statements
 
-  numbers = confirm("Do you want numbers in your password?");
+  numbers = confirm("Do you want numbers in your password? Click cancel for no");
   console.log(numbers);
-  symbols = confirm("Do you want symbols in your password?");
+  symbols = confirm("Do you want symbols in your password? Click cancel for no");
   console.log(symbols);
-  caps = confirm("Do you want caps in your password?");
+  caps = confirm("Do you want caps in your password? Click cancel for no");
   console.log(caps);
-  lowercase = confirm("Do you want lowercase in your password?");
+  lowercase = confirm("Do you want lowercase in your password? Click cancel for no");
   console.log(lowercase);
 
   // counter of # of confirms, checks to see of var numbers, symbols, caps, lowercase is true, and if it is true adds one to the counter of confirms. This will be used to set the number of randoms characters to be pulled from the character bank
