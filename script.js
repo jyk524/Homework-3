@@ -62,6 +62,10 @@ function generatePassword() {
     majorBank = majorBank.concat(alphabetLowercase)
     confirms = confirms + 1;
   }
+  if(confirms === 0){
+    alert("To generate a password, you will need to choose atleast one type of character. Please try again")
+    return generatePassword();
+  }
   console.log(confirms);
 
   //If a user choses yes to put in a symbol, then a random character from that array will be pushed into the end of the newpassword
