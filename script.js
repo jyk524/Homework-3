@@ -21,10 +21,10 @@ function generatePassword() {
   if (
     parseInt(passwordLength) > 128 ||
     parseInt(passwordLength) < 8 ||
-    isNaN(passwordLength)
-    // typeof passwordLength === "boolean" ||
-    // typeof passwordLength === "undefined"
-  ) {
+    isNaN(passwordLength) ||
+    passwordLength === "" ||
+    passwordLength === null
+    ) {
     alert("Please choose a new number between 8 - 128 for you password length");
     return generatePassword();
   }
