@@ -19,8 +19,8 @@ function generatePassword() {
     "How long do you want your password to be? Please enter a # from 8 - 128."
   );
   if (
-    parseInt(passwordLength) > 128 ||
-    parseInt(passwordLength) < 8 ||
+    Math.floor(parseInt(passwordLength)) > 128 ||
+    Math.floor(parseInt(passwordLength)) < 8 ||
     isNaN(passwordLength) ||
     passwordLength === "" ||
     passwordLength === null
