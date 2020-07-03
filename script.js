@@ -15,8 +15,16 @@ console.log(sym);
 function generatePassword() {
   // asks the user how long they want the password to be and saves it to passwordLength. Password conditions are between 8-128 characters
   var passwordLength;
-  passwordLength = prompt("How long do you want your password to be?");
-  if (passwordLength > 128 || passwordLength < 8) {
+  passwordLength = prompt(
+    "How long do you want your password to be? Please enter a # from 8 - 128."
+  );
+  if (
+    parseInt(passwordLength) > 128 ||
+    parseInt(passwordLength) < 8 ||
+    isNaN(passwordLength)
+    // typeof passwordLength === "boolean" ||
+    // typeof passwordLength === "undefined"
+  ) {
     alert("Please choose a new number between 8 - 128 for you password length");
     return generatePassword();
   }
@@ -29,7 +37,7 @@ function generatePassword() {
   var confirms = 0;
   // newpassword variable is an array that will be filled with our random chracters for the password
   var newpassword = [];
-  //major bank is an empty array that will have the smaller banks added to it when the user chooses to. The random character will be chosen from here.
+  //major bank is an empty array that will have the smaller banks added to it when the user chooses to. The random characters will be chosen from here.
   var majorBank = [];
 
   //These confirms ask the user what chracter types they would like in their password
